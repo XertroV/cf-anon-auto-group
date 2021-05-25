@@ -17,7 +17,7 @@ after_initialize do
 
   require_dependency 'discourse_event'
 
-  DiscourseEvent.on(:user_logged_in) do |user|
+  DiscourseEvent.on(:user_created) do |user|
     if SiteSetting.cf_anon_auto_group_enabled
       if user.anonymous?
         user.set_automatic_groups
